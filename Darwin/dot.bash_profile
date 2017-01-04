@@ -51,8 +51,12 @@ export PATH
 
 
 # Show me todays "things" tasks.
-echo ""
-~/bin/things today |fold -w 75 -s
+if [ -x "~/bin/things" ]; then
+	echo ""
+	~/bin/things today |fold -w 75 -s
+else 
+	echo "\"things\" not found"
+fi
 
 
 # Print My Calendar for Today

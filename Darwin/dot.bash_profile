@@ -51,9 +51,9 @@ export PATH
 
 
 # Show me todays "things" tasks.
-if [ -x "~/bin/things" ]; then
+if [ -x "${HOME}/bin/things" ]; then
 	echo ""
-	~/bin/things today |fold -w 75 -s
+	${HOME}/bin/things today |fold -w 75 -s
 else 
 	echo "\"things\" not found"
 fi

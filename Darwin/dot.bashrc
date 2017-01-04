@@ -1,11 +1,3 @@
-
-alias logs="tail -f /Applications/MAMP/logs/*"
-alias mgu="ssh root@91.207.122.20"
-
-
-alias n="~/bin/ext.sh"
-
-
 #
 # Aliases
 #
@@ -13,6 +5,8 @@ alias n="~/bin/ext.sh"
 # macOS Finder
 alias finderShowFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias finderHideFiles='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder /System/Library/CoreServices/Finder.app'
+alias finderShowExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool true'
+alias finderHideExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool false'
 
 # cd to front macOS Finder window
 cdf () {
@@ -31,11 +25,15 @@ EOT
 	cd "$currFolderPath"
 }
 
+# Screenshots
+alias disableShadow='defaults write com.apple.screencapture disable-shadow -bool true'
+alias enableShadow='defaults write com.apple.screencapture disable-shadow -bool false'
+
 # Fun
 alias starwars="telnet towel.blinkenlights.nl" # Star wars action
 
 # Shell
-alias ll='ls -FGlAhptrh'
+alias ll='ls -lah'
 cd() { builtin cd "$@"; ls; }				# List directory contents on 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
@@ -62,7 +60,7 @@ alias qfind="find . -name "                 # Search for file
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 
 # Networking
-alias myip='curl ip.appspot.com'                    # WAN IP Address
+alias whatsmyip='curl -s https://api.ipify.org'                    # WAN IP Address
 alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
 
     

@@ -3,10 +3,10 @@
 #
 
 # macOS Finder
-alias finderShowFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias finderHideFiles='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder /System/Library/CoreServices/Finder.app'
-alias finderShowExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool true'
-alias finderHideExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool false'
+alias finderShowFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
+alias finderHideFiles='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
+alias finderShowExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool true; killall Finder'
+alias finderHideExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool false; killall Finder'
 
 # cd to front macOS Finder window
 cdf () {

@@ -1,8 +1,5 @@
 #
-# ioko ISB root .bashrc
-#
-# VERSION: 1.0
-#
+# robert.will.brown@gmail.com's .bashrc
 #
 # We need extglob turned on, so save the current value
 declare oldextglob=$( shopt extglob )

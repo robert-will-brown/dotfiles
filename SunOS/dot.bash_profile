@@ -1,9 +1,5 @@
 #
-# ioko ISB root .bash_profile
-#
-# VERSION: 1.0
-#
-#
+# robert.will.brown@gmail.com's Solaris/SunOS bash profile
 #
 
 #

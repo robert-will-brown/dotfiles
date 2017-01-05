@@ -62,7 +62,8 @@ fi
 # Print My Calendar for Today
 if [ -x "/usr/local/bin/icalBuddy" ]; then
 	echo "Calendar:"
-	/usr/local/bin/icalBuddy -n -b "*- " -f -npn  -iep "title,datetime,location" eventsToday
+	#/usr/local/bin/icalBuddy -n -b "*- " -f -npn -tf "%1I:%M %p" -iep "title,datetime,location" eventsToday
+	/usr/local/bin/icalBuddy -tf "%1I:%M %p" -iep datetime,title -ps "| / | -- |" eventsToday
 	echo ""
 else
 	echo "icalBuddy not found"

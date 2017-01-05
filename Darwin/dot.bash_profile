@@ -24,7 +24,7 @@ for DIR in \
 	"/opt/local/sbin" \
 	"/Applications/VMware OVF Tool" \
 	"/Applications/VMware Fusion.app/Contents/Library" \
-	"/Applications//VMware Fusion.app/Contents/Library/VMware OVF Tool"
+	"/Applications/VMware Fusion.app/Contents/Library/VMware OVF Tool"
 	do
 		if [ -d "${DIR}" ]; then
 			PATH=$PATH:${DIR}
@@ -70,7 +70,9 @@ else
 fi
 
 # Use htop if available.
-test -f  /usr/local/bin/htop && alias top="/usr/local/bin/htop"
+if [ -x "/usr/local/bin/htop" ]; then
+	alias top="/usr/local/bin/htop"
+fi
 
 #
 # Load in .bashrc for aliases, etc.

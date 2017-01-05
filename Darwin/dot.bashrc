@@ -33,7 +33,6 @@ alias enableShadow='defaults write com.apple.screencapture disable-shadow -bool 
 alias starwars="telnet towel.blinkenlights.nl" # Star wars action
 
 # Shell
-alias ll='ls -lah'
 cd() { builtin cd "$@"; ls; }				# List directory contents on 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
@@ -46,7 +45,8 @@ alias cp='cp -iv'							#
 alias mv='mv -iv'							# 
 alias mkdir='mkdir -pv'   					# 
 alias c="clear"								# 
-alias l="ls"								# 
+alias ll='ls -lah'
+alias l="ls -a"								# 
 alias pp="ps -ef"							# 
 alias f='open -a Finder ./'                 # Opens current directory in MacOS Finder
 mcd () { mkdir -p "$1" && cd "$1"; }        # Makes new Dir and jumps inside
@@ -54,7 +54,7 @@ trash () { command mv "$@" ~/.Trash ; }     # Moves a file to the MacOS trash
 alias DT='tee ~/Desktop/terminalOut.txt'    # Pipe content to file on MacOS Desktop
 
 # Searching
-alias qfind="find . -name "                 # Search for file
+alias qfind="find . |grep -i "                 # Search for file
 
 # Processes
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'

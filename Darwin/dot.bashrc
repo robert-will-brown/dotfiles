@@ -63,6 +63,10 @@ alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 alias whatsmyip='curl -s https://api.ipify.org'                    # WAN IP Address
 alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
 
+ # Use htop if available.
+if [ -x "/usr/local/bin/htop" ]; then
+	alias top="/usr/local/bin/htop"
+fi   
     
 #
 # Colour Stuff

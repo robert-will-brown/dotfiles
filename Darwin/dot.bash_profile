@@ -1,6 +1,11 @@
 #
 # Robs .profile for macOS
 #
+
+# Define some variables.
+BOLD_RED="\033[1;31m"
+NORMAL="\033[0m"
+
 set bell-style off
 
 HISTFILESIZE=10000
@@ -16,8 +21,8 @@ export CLICOLOR LSCOLORS
 
 # Test for directories and add to path if they exist.
 for DIR in \
-	/usr/local/bin \
-	~/bin \
+	"/usr/local/bin" \
+	"${HOME}/bin" \
 	"/Developer/usr/bin" \
 	"/Applications/MAMP/Library/bin" \
 	"/opt/local/bin" \
@@ -31,7 +36,6 @@ for DIR in \
 		fi
 done
 export PATH
-
 
 
 # Fortune Coolness
@@ -50,29 +54,36 @@ export PATH
 ##echo ""
 
 
-# Show me todays "things" tasks.
+
+# Show me Todays Tasks.
 if [ -x "${HOME}/bin/things" ]; then
 	echo ""
-	${HOME}/bin/things today |fold -w 75 -s
+	echo -e "${BOLD_RED}- Todays Tasks -${NORMAL}"
+	${HOME}/bin/things today \
+		|grep -v "Things: list Today" \
+		|fold -w 75 -s \
+		|sed 's/*-/•/g' \
+		|sed 's/*√/✔/g'
 else 
 	echo "\"things\" not found"
 fi
 
 
-# Print My Calendar for Today
+# Show me todays remaining Events
 if [ -x "/usr/local/bin/icalBuddy" ]; then
-	echo "Calendar:"
-	#/usr/local/bin/icalBuddy -n -b "*- " -f -npn -tf "%1I:%M %p" -iep "title,datetime,location" eventsToday
-	/usr/local/bin/icalBuddy -tf "%1I:%M %p" -iep datetime,title -ps "| / | -- |" eventsToday
+	echo -e "${BOLD_RED}- Todays Remaining Events -${NORMAL}"
+	/usr/local/bin/icalBuddy \
+		-tf "%1I:%M %p" \
+		-iep datetime,title \
+		-ps "| / | -- |" \
+		--includeOnlyEventsFromNowOn \
+		 -po "datetime,title" \
+		eventsToday
 	echo ""
 else
 	echo "icalBuddy not found"
 fi
 
-# Use htop if available.
-if [ -x "/usr/local/bin/htop" ]; then
-	alias top="/usr/local/bin/htop"
-fi
 
 #
 # Load in .bashrc for aliases, etc.

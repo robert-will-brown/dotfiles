@@ -8,7 +8,7 @@ alias finderHideFiles='defaults write com.apple.finder AppleShowAllFiles NO;  ki
 alias finderShowExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool true; killall Finder'
 alias finderHideExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool false; killall Finder'
 
-# cd to front macOS Finder window
+# Change directory to the current Finder directory 
 cdf () {
 	currFolderPath=$( /usr/bin/osascript <<EOT
 		tell application "Finder"
@@ -61,7 +61,14 @@ alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 
 # Networking
 alias whatsmyip='curl -s https://api.ipify.org'                    # WAN IP Address
+alias ipaddress='curl -s https://api.ipify.org'                    # WAN IP Address
 alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
+
+# Software
+alias installBrew='/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+alias installBrewPackages="brew install nmap aws-shell wget dos2unix geoip htop imagemagick ffmpeg cowsay dockutil ical-buddy fortune terminal-notifier figlet whatmask  youtube-dl speedtest-cli trash thefuck archey pv tree lynx"
+alias installBrewDeveloperPackages="brew install mongodb mysql cassandra memcached redis rdm"
+
 
  # Use htop if available.
 if [ -x "/usr/local/bin/htop" ]; then

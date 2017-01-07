@@ -53,7 +53,9 @@ export PATH
 ##fi
 ##echo ""
 
-
+if [ -x /usr/local/bin/archey ]; then
+	/usr/local/bin/archey
+fi
 
 # Show me Todays Tasks.
 if [ -x "${HOME}/bin/things" ]; then
@@ -71,14 +73,20 @@ fi
 
 # Show me todays remaining Events
 if [ -x "/usr/local/bin/icalBuddy" ]; then
-	echo -e "${BOLD_RED}- Todays Remaining Events -${NORMAL}"
-	/usr/local/bin/icalBuddy \
+	EVENTS=$(/usr/local/bin/icalBuddy \
 		-tf "%1I:%M %p" \
 		-iep datetime,title \
 		-ps "| / | -- |" \
 		--includeOnlyEventsFromNowOn \
 		 -po "datetime,title" \
-		eventsToday
+		eventsToday \
+		|grep "^• [0-9]")
+	if [ -z "${EVENTS}" ]; then
+		echo -e "${BOLD_RED}No Events for the rest of day.${NORMAL}"
+	else
+		echo -e "${BOLD_RED}- Todays Remaining Events -${NORMAL}"
+		echo ${EVENTS}
+	fi
 	echo ""
 else
 	echo "icalBuddy not found"

@@ -2,11 +2,30 @@
 # Aliases
 #
 
+# Hardware
+alias macRemainingBattery='pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d";"'
+alias macScreenResolution="system_profiler SPDisplaysDataType | grep Resolution"
+alias macStopSleep1hour="caffeinate -u -t 3600"
+alias macMagsafeChargingSoundEnable="defaults write com.apple.PowerChime ChimeOnAllHardware -bool true && open /System/Library/CoreServices/PowerChime.app"
+alias macMagsafeChargingSoundDisable="defaults write com.apple.PowerChime ChimeOnAllHardware -bool false && killall PowerChime"
+alias ejectall='osascript -e "tell application \"Finder\" to eject (every disk whose ejectable is true)"'
+
+# Security
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias screensaver="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+ 
 # macOS Finder
 alias finderShowFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
 alias finderHideFiles='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
 alias finderShowExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool true; killall Finder'
 alias finderHideExtensions='defaults write NSGlobalDomain AppleShowAllExtensions -bool false; killall Finder'
+alias finderShowFullPath='defaults write com.apple.finder _FXShowPosixPathInTitle -bool true; killall Finder'
+alias finderHideFullPath='defaults write com.apple.finder _FXShowPosixPathInTitle -bool false; killall Finder'
+
+# macOS Dock
+alias dockShowRecentAppsInDock="defaults write com.apple.dock persistent-others -array-add '{ "tile-data" = { "list-type" = 1; }; "tile-type" = "recents-tile"; }'; killall Dock"
+alias dockReset="defaults delete com.apple.dock; killall Dock"
+
 
 # Change directory to the current Finder directory 
 cdf () {
@@ -31,6 +50,7 @@ alias enableShadow='defaults write com.apple.screencapture disable-shadow -bool 
 
 # Fun
 alias starwars="telnet towel.blinkenlights.nl" # Star wars action
+
 
 # Shell
 cd() { builtin cd "$@"; ls; }				# List directory contents on 'cd'

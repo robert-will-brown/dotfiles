@@ -72,21 +72,17 @@ fi
 
 
 # Show me todays remaining Events
+echo -e "${BOLD_RED}- Todays Remaining Events -${NORMAL}"
 if [ -x "/usr/local/bin/icalBuddy" ]; then
-	EVENTS=$(/usr/local/bin/icalBuddy \
+	/usr/local/bin/icalBuddy \
 		-tf "%1I:%M %p" \
 		-iep datetime,title \
 		-ps "| / | -- |" \
 		--includeOnlyEventsFromNowOn \
 		 -po "datetime,title" \
 		eventsToday \
-		|grep "^• [0-9]")
-	if [ -z "${EVENTS}" ]; then
-		echo -e "${BOLD_RED}No Events for the rest of day.${NORMAL}"
-	else
-		echo -e "${BOLD_RED}- Todays Remaining Events -${NORMAL}"
-		echo ${EVENTS}
-	fi
+		|grep "^• [0-9]" \
+		|grep -v "(Oliver)"
 	echo ""
 else
 	echo "icalBuddy not found"

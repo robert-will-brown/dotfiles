@@ -61,14 +61,13 @@ alias qfind="find . |grep -i "                 # Search for file
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 
 # Networking
-alias whatsmyip='curl -s https://api.ipify.org'                    # WAN IP Address
-alias ipaddress='curl -s https://api.ipify.org'                    # WAN IP Address
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
 
 # Software
 alias installBrew='/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-alias installBrewPackages="brew install nmap aws-shell wget dos2unix geoip htop imagemagick ffmpeg cowsay dockutil ical-buddy fortune terminal-notifier figlet whatmask  youtube-dl speedtest-cli trash thefuck archey pv tree lynx"
-alias installBrewDeveloperPackages="brew install mongodb mysql cassandra memcached redis rdm"
+alias installBrewPackages="brew install nmap aws-shell wget dos2unix geoip htop imagemagick ffmpeg cowsay dockutil ical-buddy fortune terminal-notifier figlet whatmask  youtube-dl speedtest-cli trash thefuck archey pv tree lynx p7zip awscli Caskroom/cask/vlc rtmpdump"
+alias installBrewDeveloperPackages="brew install mongodb mysql cassandra memcached redis rdm elasticsearch node"
 
 
  # Use htop if available.

@@ -53,9 +53,9 @@ export PATH
 ##fi
 ##echo ""
 
-if [ -x /usr/local/bin/archey ]; then
-	/usr/local/bin/archey
-fi
+#if [ -x /usr/local/bin/archey ]; then
+#	/usr/local/bin/archey
+#fi
 
 # Show me Todays Tasks.
 if [ -x "${HOME}/bin/things" ]; then

@@ -57,7 +57,6 @@ mcd () { mkdir -p "$1" && cd "$1"; }        # Makes new Dir and jumps inside
 trash () { command mv "$@" ~/.Trash ; }     # Moves a file to the MacOS trash
 alias DT='tee ~/Desktop/terminalOut.txt'    # Pipe content to file on MacOS Desktop
 eval $(thefuck --alias)
-alias mostUsedCommand="history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n10"
 
 # Searching
 alias qfind="find . |grep -i "                 # Search for file
@@ -71,8 +70,10 @@ alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
 
 # Software
 alias installBrew='/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-alias installBrewPackages="brew install nmap aws-shell wget dos2unix geoip htop imagemagick ffmpeg cowsay dockutil ical-buddy fortune terminal-notifier figlet whatmask  youtube-dl speedtest-cli trash thefuck archey pv tree lynx p7zip awscli Caskroom/cask/vlc rtmpdump shellcheck docker"
-alias installBrewDeveloperPackages="brew install mongodb mysql cassandra memcached redis rdm elasticsearch node docker Caskroom/cask/java jenkins"
+alias installBrewPackages="brew install nmap aws-shell wget dos2unix geoip htop imagemagick ffmpeg cowsay dockutil ical-buddy fortune terminal-notifier figlet whatmask  youtube-dl speedtest-cli trash thefuck archey pv tree lynx p7zip awscli Caskroom/cask/vlc rtmpdump shellcheck docker Caskroom/cask/transmission"
+alias installBrewDeveloperPackages="brew install mongodb mysql cassandra memcached redis rdm elasticsearch node docker Caskroom/cask/java jenkins elasticsearch"
 
-
+# Office Admin
+alias scanName="echo '2017-MM-DD COMPANY - Letter_Name'"
+alias dateStamp="date +%Y%m%d-%H"
 

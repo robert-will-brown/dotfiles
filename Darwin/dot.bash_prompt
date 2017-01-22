@@ -1,0 +1,29 @@
+#
+# Robs PS1 file
+#
+
+# Std Prompt ##############################################
+# [rob@Robs-MacBook-Pro:~]$ 
+PROMPT_STD='[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]\[\033[31m\]$ \[\033[00m\]'
+#PS1="[\[\033[32m\]`if [ $? = 0 ]; then echo "😀  "; else echo "😡 " ; fi`- \u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]\[\033[31m\]$ \[\033[00m\]"
+
+
+##PS1=`if [ $? = 0 ]; then echo "😀  "; else echo "😡  " ; fi`
+
+PROMPT_COMMAND=smile_prompt
+
+function smile_prompt
+{
+	if [ "$?" -eq "0" ]; then
+		#smiley
+		EXIT_CODE="😀 "
+	else
+		#frowney
+		EXIT_CODE="😡 "
+	fi
+
+#PS1="[${UC}\u${RC}@${HC}\h ${RC}\W${DF}] ${EXIT_CODE} "
+NEWLINE="\n"
+#PS1="${EXIT_CODE}\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
+PS1="${EXIT_CODE}\u@\h \w ${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
+}

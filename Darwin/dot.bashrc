@@ -57,7 +57,11 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# Prompt
+if [ -f ~/.bash_prompt ]; then
+    . ~/.bash_prompt
+fi
     
 
 export CLICOLOR=1
-PS1='[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]\[\033[31m\]$ \[\033[00m\]'

@@ -27,6 +27,6 @@ NEWLINE="\n"
 # Smiley face on command complete
 #PS1="${EXIT_CODE}\u@\h \w ${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
 
-PS1="[\u@\h \w]${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
+PS1="\[\033[33;1m\][\u@\h \[\033[1;36m\]\w\[\033[33;1m\]]\[\033[00m\]${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
 
 }

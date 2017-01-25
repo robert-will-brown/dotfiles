@@ -18,6 +18,9 @@ test -f ${DOTFILE_DIR}/dot.bash_profile && \
 test -f ${DOTFILE_DIR}/dot.bashrc && \
 	ln -s ${DOTFILE_DIR}/dot.bashrc ~/.bashrc
 
+test -f ${DOTFILE_DIR}/dot.bash_colours && \
+	ln -s ${DOTFILE_DIR}/dot.bash_colours ~/.bash_colours
+
 test -f ${DOTFILE_DIR}/dot.bash_prompt && \
 	ln -s ${DOTFILE_DIR}/dot.bash_prompt ~/.bash_prompt
 

@@ -1,32 +1,55 @@
 #
-# Robs PS1 file
+# Robs Prompt file
 #
 
-# Std Prompt ##############################################
-# [rob@Robs-MacBook-Pro:~]$ 
-PROMPT_STD='[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]\[\033[31m\]$ \[\033[00m\]'
-#PS1="[\[\033[32m\]`if [ $? = 0 ]; then echo "😀  "; else echo "😡 " ; fi`- \u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]\[\033[31m\]$ \[\033[00m\]"
+##PROMPT_STD='[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]\[\033[31m\]$ \[\033[00m\]'
 
+if [ -f ${HOME}/.bash_colours ]; then
+	. ${HOME}/.bash_colours
+else
+	echo "No ~/.bash_colours found, not setting up prompt"
+	exit 1
+fi
 
+PROMPT_COMMAND=set_title_and_prompt
 
-PROMPT_COMMAND=smile_prompt
+# Functions to show git information in terminal window title
+function parse_git_dirty {
+	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
 
-function smile_prompt
-{
-	if [ "$?" -eq "0" ]; then
-		#smiley
-		EXIT_CODE="😀 "
-	else
-		#frowney
-		EXIT_CODE="😡 "
+function parse_git_branch {
+	GIT_OUTPUT=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/")
+	if [ ! -z ${GIT_OUTPUT} ]; then
+		echo "[git: ${GIT_OUTPUT}]"
 	fi
 
-#PS1="[${UC}\u${RC}@${HC}\h ${RC}\W${DF}] ${EXIT_CODE} "
-NEWLINE="\n"
-#PS1="${EXIT_CODE}\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]\[\033[00m\]]${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
-# Smiley face on command complete
-#PS1="${EXIT_CODE}\u@\h \w ${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
+}
 
-PS1="\[\033[33;1m\][\u@\h \[\033[1;36m\]\w\[\033[33;1m\]]\[\033[00m\]${NEWLINE}\[\033[31m\]$ \[\033[00m\]"
+function set_title_and_prompt
+{
+	# Did the last command exit cleanly?
+	if [ "$?" -eq "0" ]; then
+		#smiley
+		SUCCESS_EMOJI_WINDOW="😀"
+		SUCCESS_EMOJI_PROMPT="👍 "
+	else
+		#frowney
+		SUCCESS_EMOJI_WINDOW="😡"
+		SUCCESS_EMOJI_PROMPT="👎 "
+	fi
+
+	# Is it past going home time?
+	if [ $(date "+%H%M") -gt 1730 ]; then 
+		BEER_OCLOCK="🍺 - "
+	fi	
+
+
+	# Set terminal window title
+	WINDOW_TITLE="${BEER_OCLOCK}[${SUCCESS_EMOJI_WINDOW}] $(parse_git_branch)"
+	echo -n -e "\033]0;${WINDOW_TITLE}\007"
+
+	# Set prompt
+	PS1="${GREY}[${MAGENTA}\u@\h ${CYAN}\w${GREY}][${SUCCESS_EMOJI_PROMPT}]${NEWLINE}${RED}$ ${RESET}"
 
 }

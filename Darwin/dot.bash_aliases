@@ -69,9 +69,6 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
 
 # Software
-alias installBrew='/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-alias installBrewPackages="brew install nmap aws-shell wget dos2unix geoip htop imagemagick ffmpeg cowsay dockutil ical-buddy fortune terminal-notifier figlet whatmask  youtube-dl speedtest-cli trash thefuck archey pv tree lynx p7zip awscli Caskroom/cask/vlc rtmpdump shellcheck docker Caskroom/cask/transmission enscript"
-alias installBrewDeveloperPackages="brew install mongodb mysql cassandra memcached redis rdm elasticsearch node docker Caskroom/cask/java jenkins elasticsearch"
 
 # Office Admin
 alias scanName="echo '2017-MM-DD COMPANY - Letter_Name'"

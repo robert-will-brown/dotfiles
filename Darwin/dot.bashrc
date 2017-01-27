@@ -58,10 +58,16 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Set AWS Profile
+if [ -f ~/.aws_profilename ]; then
+	export AWS_DEFAULT_PROFILE=$(cat ~/.aws_profilename)
+fi
+
 # Prompt
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
-    
 
+
+    
 export CLICOLOR=1

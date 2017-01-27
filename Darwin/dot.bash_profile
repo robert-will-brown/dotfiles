@@ -65,7 +65,7 @@ if [ -x "${HOME}/bin/things" ]; then
 		|grep -v "Things: list Today" \
 		|fold -w 75 -s \
 		|sed 's/*-/•/g' \
-		|sed 's/*√/✔/g'
+		|sed 's/*√/✅ /g'
 else 
 	echo "\"things\" not found"
 fi

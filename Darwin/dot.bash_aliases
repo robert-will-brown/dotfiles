@@ -2,9 +2,6 @@
 # Aliases
 #
 
-# AWS
-alias ec2instance="aws ec2 run-instances --image-id ami-bfe0eadb --count 1 --instance-type t2.micro --key-name visual20-bastion-hosts --security-group-ids sg-e1bd4b88 --subnet-id subnet-0aab9f40"
-
 # Apple Hardware
 alias macRemainingBattery='pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d";"'
 alias macScreenResolution="system_profiler SPDisplaysDataType | grep Resolution"
@@ -74,3 +71,15 @@ alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
 alias scanName="echo '2017-MM-DD COMPANY - Letter_Name'"
 alias dateStamp="date +%Y%m%d-%H"
 
+# AWS
+setAWSProfile () {
+	if [ "${1}" != "" ]; then
+		echo $1 > ~/.aws_profilename
+		export AWS_DEFAULT_PROFILE=$1
+	fi
+
+	echo $AWS_DEFAULT_PROFILE
+
+}
+alias awsprof=setAWSProfile
+alias awsPersonna="echo you mean awsprof?"

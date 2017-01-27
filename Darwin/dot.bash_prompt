@@ -21,7 +21,7 @@ function parse_git_dirty {
 function parse_git_branch {
 	GIT_OUTPUT=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/")
 	if [ ! -z ${GIT_OUTPUT} ]; then
-		echo "[git: ${GIT_OUTPUT}]"
+		echo "[👾git: ${GIT_OUTPUT}]"
 	fi
 
 }
@@ -44,9 +44,14 @@ function set_title_and_prompt
 		BEER_OCLOCK="🍺 - "
 	fi	
 
+	# What AWS profile are we using?
+	if [ ! -z $AWS_DEFAULT_PROFILE ]; then
+		AWS_PROFILE="[☁️AWS/${AWS_DEFAULT_PROFILE}]"	
+	fi
+
 
 	# Set terminal window title
-	WINDOW_TITLE="${BEER_OCLOCK}[${SUCCESS_EMOJI_WINDOW}] $(parse_git_branch)"
+	WINDOW_TITLE="${BEER_OCLOCK}[${SUCCESS_EMOJI_WINDOW}] $(parse_git_branch) $AWS_PROFILE"
 	echo -n -e "\033]0;${WINDOW_TITLE}\007"
 
 	# Set prompt

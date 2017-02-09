@@ -2,6 +2,10 @@
 # Aliases
 #
 
+#tmp
+alias pythonlab="cd  ~/Documents/Areas/Tech/Python/Python\ Course/google-python-exercises/basic"
+alias weather="ansiweather -l Fleet,UK"
+
 # Apple Hardware
 alias macRemainingBattery='pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d";"'
 alias macScreenResolution="system_profiler SPDisplaysDataType | grep Resolution"

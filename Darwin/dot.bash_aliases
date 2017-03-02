@@ -87,3 +87,8 @@ setAWSProfile () {
 }
 alias awsprof=setAWSProfile
 alias awsPersonna="echo you mean awsprof?"
+
+alias s="subl ."
+
+# Vagrant
+alias goubuntu="cd /Users/rob/vagrant/base/ubuntu-trusty; vagrant up; vagrant ssh ubuntu"

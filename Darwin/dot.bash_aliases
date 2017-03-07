@@ -67,6 +67,7 @@ alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 
 # Networking
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias myip=ip
 alias flushDNS='dscacheutil -flushcache'            # Flush DNS Cache
 
 # Software
@@ -91,4 +92,11 @@ alias awsPersonna="echo you mean awsprof?"
 alias s="subl ."
 
 # Vagrant
-alias goubuntu="cd /Users/rob/vagrant/base/ubuntu-trusty; vagrant up; vagrant ssh ubuntu"
+VAGRANT_ROOT="~/vagrant"
+alias vubuntu="cd ${VAGRANT_ROOT}/base/ubuntu-trusty; vagrant up; open http://localhost:8931; vagrant ssh ubuntu"
+alias vcentos="cd ${VAGRANT_ROOT}/base/centos7; vagrant up; open http://localhost:8932; vagrant ssh centos"
+
+#
+# AT&T
+#
+alias devbas="ssh -i ~/Documents/Certificates/vcns-bastion.pem ubuntu@52.14.84.253"

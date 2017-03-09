@@ -8,3 +8,10 @@ if [ -f /sys/hypervisor/uuid ] && [ `head -c 3 /sys/hypervisor/uuid` == ec2 ]; t
 else
 	echo no
 fi
+
+
+# Get Aliases
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+
+fi

@@ -9,9 +9,20 @@ else
 	echo no
 fi
 
+HISTFILESIZE=10000
 
-# Get Aliases
-if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+# Set Editor
+EDITOR=vim
+SVN_EDITOR=vim
+export SVN_EDITOR HISTFILESIZE EDITOR
 
-fi
+CLICOLOR=1
+LSCOLORS=gxfxcxdxbxegedabagacad
+export CLICOLOR LSCOLORS
+
+
+#
+# Load in .bashrc for aliases, etc.
+#
+test -f ~/.bashrc && . ~/.bashrc
+

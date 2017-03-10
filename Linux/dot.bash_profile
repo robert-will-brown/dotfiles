@@ -4,9 +4,7 @@
 
 # Check if we are an EC2 instance.
 if [ -f /sys/hypervisor/uuid ] && [ `head -c 3 /sys/hypervisor/uuid` == ec2 ]; then
-	echo yes
-else
-	echo no
+	echo "This is a EC2 instance"
 fi
 
 HISTFILESIZE=10000

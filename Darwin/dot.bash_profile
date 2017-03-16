@@ -7,6 +7,7 @@ BOLD_RED="\033[1;31m"
 NORMAL="\033[0m"
 
 set bell-style off
+set -o vi
 
 HISTFILESIZE=10000
 

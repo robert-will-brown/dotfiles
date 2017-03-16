@@ -58,6 +58,8 @@ mcd () { mkdir -p "$1" && cd "$1"; }        # Makes new Dir and jumps inside
 trash () { command mv "$@" ~/.Trash ; }     # Moves a file to the MacOS trash
 alias DT='tee ~/Desktop/terminalOut.txt'    # Pipe content to file on MacOS Desktop
 eval $(thefuck --alias)
+alias dl="cd ~/Downloads"
+alias downloads="cd ~/Downloads"
 
 # Searching
 alias qfind="find . |grep -i "                 # Search for file
@@ -96,7 +98,3 @@ VAGRANT_ROOT="~/vagrant"
 alias vubuntu="cd ${VAGRANT_ROOT}/base/ubuntu-trusty; vagrant up; open http://localhost:8931; vagrant ssh ubuntu"
 alias vcentos="cd ${VAGRANT_ROOT}/base/centos7; vagrant up; open http://localhost:8932; vagrant ssh centos"
 
-#
-# AT&T
-#
-alias devbas="ssh -i ~/Documents/Certificates/vcns-bastion.pem ubuntu@52.14.84.253"

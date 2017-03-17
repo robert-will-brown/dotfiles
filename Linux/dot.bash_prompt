@@ -53,10 +53,11 @@ function set_title_and_prompt
 
 	case "$(/bin/hostname)" in
 	"ip-10-0-31-143")
-		HOSTNAME_PROMPT="${RED}dev-bastion${RESET}"
+		# Bastion hosts
+		HOSTNAME_PROMPT="🏰 "
 		;;
 	*)
-		HOSTNAME_PROMPT=$(/bin/hostname)
+		HOSTNAME_PROMPT="${RED}$(/bin/hostname)${RESET}"
 		;;
 	esac
 

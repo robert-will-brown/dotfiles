@@ -7,7 +7,6 @@ BOLD_RED="\033[1;31m"
 NORMAL="\033[0m"
 
 set bell-style off
-set -o vi
 
 HISTFILESIZE=10000
 
@@ -59,35 +58,35 @@ export PATH
 #fi
 
 # Show me Todays Tasks.
-if [ -x "${HOME}/bin/things" ]; then
-	echo ""
-	echo -e "${BOLD_RED}- Todays Tasks -${NORMAL}"
-	${HOME}/bin/things today \
-		|grep -v "Things: list Today" \
-		|fold -w 75 -s \
-		|sed 's/*-/•/g' \
-		|sed 's/*√/✅ /g'
-else 
-	echo "\"things\" not found"
-fi
+##if [ -x "${HOME}/bin/things" ]; then
+##	echo ""
+##	echo -e "${BOLD_RED}- Todays Tasks -${NORMAL}"
+##	${HOME}/bin/things today \
+##		|grep -v "Things: list Today" \
+##		|fold -w 75 -s \
+##		|sed 's/*-/•/g' \
+##		|sed 's/*√/✅ /g'
+##else 
+##	echo "\"things\" not found"
+##fi
 
 
 # Show me todays remaining Events
-echo -e "${BOLD_RED}- Todays Remaining Events -${NORMAL}"
-if [ -x "/usr/local/bin/icalBuddy" ]; then
-	/usr/local/bin/icalBuddy \
-		-tf "%1I:%M %p" \
-		-iep datetime,title \
-		-ps "| / | -- |" \
-		--includeOnlyEventsFromNowOn \
-		 -po "datetime,title" \
-		eventsToday \
-		|grep "^• [0-9]" \
-		|grep -v "(Oliver)"
-	echo ""
-else
-	echo "icalBuddy not found"
-fi
+##echo -e "${BOLD_RED}- Todays Remaining Events -${NORMAL}"
+##if [ -x "/usr/local/bin/icalBuddy" ]; then
+##	/usr/local/bin/icalBuddy \
+##		-tf "%1I:%M %p" \
+##		-iep datetime,title \
+##		-ps "| / | -- |" \
+##		--includeOnlyEventsFromNowOn \
+##		 -po "datetime,title" \
+##		eventsToday \
+##		|grep "^• [0-9]" \
+##		|grep -v "(Oliver)"
+##	echo ""
+##else
+##	echo "icalBuddy not found"
+##fi
 
 
 #

@@ -49,12 +49,23 @@ function set_title_and_prompt
 		AWS_PROFILE="[☁️AWS/${AWS_DEFAULT_PROFILE}]"	
 	fi
 
+	# Highlight if we aren't on on of my systems
+	case "$(/bin/hostname -s)" in
+		"robs-mpb"|"Robs-MacBook-Pro")
+			HOSTNAME_PROMPT="🏠 "
+		;;
+
+		*)
+			HOSTNAME_PROMPT="${RED}$(/bin/hostname -s)${RESET}"
+		;;
+
+	esac
 
 	# Set terminal window title
-	WINDOW_TITLE="${BEER_OCLOCK}[${SUCCESS_EMOJI_WINDOW}] $(parse_git_branch) $AWS_PROFILE"
+	WINDOW_TITLE="${HOSTNAME_PROMPT}[${SUCCESS_EMOJI_WINDOW}] $(parse_git_branch) $AWS_PROFILE ${BEER_OCLOCK}"
 	echo -n -e "\033]0;${WINDOW_TITLE}\007"
 
 	# Set prompt
-	PS1="${GREY}[${MAGENTA}\u@\h${GREY}]-[${CYAN}\w${GREY}]${NEWLINE}${GREY}[${SUCCESS_EMOJI_PROMPT}] ➞ ${RESET}"
+	PS1="${GREY}[${MAGENTA}\u@${HOSTNAME_PROMPT}${GREY}]-[${CYAN}\w${GREY}]${NEWLINE}${GREY}[${SUCCESS_EMOJI_PROMPT}] ➞ ${RESET}"
 
 }

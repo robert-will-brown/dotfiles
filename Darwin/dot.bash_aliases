@@ -58,6 +58,8 @@ mcd () { mkdir -p "$1" && cd "$1"; }        # Makes new Dir and jumps inside
 trash () { command mv "$@" ~/.Trash ; }     # Moves a file to the MacOS trash
 alias DT='tee ~/Desktop/terminalOut.txt'    # Pipe content to file on MacOS Desktop
 eval $(thefuck --alias)
+alias dl="cd ~/Downloads"
+alias downloads="cd ~/Downloads"
 
 # Searching
 alias qfind="find . |grep -i "                 # Search for file

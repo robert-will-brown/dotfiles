@@ -51,7 +51,17 @@ function set_title_and_prompt
 	WINDOW_TITLE="${BEER_OCLOCK}[${SUCCESS_EMOJI_WINDOW}] $(parse_git_branch) $AWS_PROFILE"
 	echo -n -e "\033]0;${WINDOW_TITLE}\007"
 
+	case "$(/bin/hostname)" in
+	"ip-10-0-31-143")
+		# Bastion hosts
+		HOSTNAME_PROMPT="🏰 "
+		;;
+	*)
+		HOSTNAME_PROMPT="${RED}$(/bin/hostname)${RESET}"
+		;;
+	esac
+
 	# Set prompt
-	PS1="${GREY}[${MAGENTA}\u@\h${GREY}]-[${CYAN}\w${GREY}]${NEWLINE}${GREY}[${SUCCESS_EMOJI_PROMPT}] ➞ ${RESET}"
+	PS1="${GREY}[${MAGENTA}\u@${HOSTNAME_PROMPT}${GREY}]-[${CYAN}\w${GREY}]${NEWLINE}${GREY}[${SUCCESS_EMOJI_PROMPT}] ➞ ${RESET}"
 
 }

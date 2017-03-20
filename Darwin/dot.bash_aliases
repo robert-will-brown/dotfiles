@@ -100,3 +100,13 @@ alias vcentos="cd ${VAGRANT_ROOT}/base/centos7; vagrant up; open http://localhos
 # AT&T
 #
 alias devbas="ssh -i ~/Documents/Certificates/vcns-bastion.pem ubuntu@52.14.84.253"
+alias dev-bastion="ssh rob@vcns-dev-bastion.integrated-digital.com"
+
+alias dev-redis01="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-redis01"
+alias dev-couchbase01="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-couchbase01"
+alias dev-elasticsearch01="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-elasticsearch01"
+alias dev-vcs="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-vcs"
+alias dev-notif01="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-notif01"
+alias dev-zookeeper01="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-zookeeper01"
+alias dev-api01="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-api01"
+alias dev-auth01="ssh -t -A rob@vcns-dev-bastion.integrated-digital.com ssh ubuntu@vcns-dev-auth01"
